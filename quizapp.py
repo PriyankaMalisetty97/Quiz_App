@@ -1,13 +1,10 @@
 import streamlit as st
 import json
 import os
-from dotenv import load_dotenv
 from openai import OpenAI
 
 # Load API key
-load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 @st.cache_data
 @st.cache_data
 def fetch_questions(text_content, quiz_level):
@@ -112,3 +109,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
